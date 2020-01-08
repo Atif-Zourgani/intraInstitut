@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <main class="PosRela">
+        <div class="loginWallpaper PosRela">
+            <div class="loginRgba">
+
+                <p><h2 class="txtCenter loginTitle">Se connecter</h2></p>
+
+                    {% trans_default_domain 'FOSUserBundle' %}
+
+                    {% if error %}
+                        <div class="txtCenter errorMessage">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <form class="loginForm txtCenter" action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <div class="loginFormSize">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <br>
+                            <input class="formWidth" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                        </div>
+                        <div class="loginFormSize">
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <br>
+                            <input class="formWidth" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                        </div>
+                        <div class="loginFormSize">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        </div>
+                        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </form>
+
+               <div class="txtCenter">
+                    <a class="loginLien" href="{{ path('loginAccueil') }}">Retour.</a>
+                    <a class="loginLien" href="{{ path('fos_user_registration_register') }}">Créer un compte.</a>
+               </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

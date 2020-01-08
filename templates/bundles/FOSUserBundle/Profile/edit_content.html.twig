@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'commons/_header.html.twig' %}
+
+    <div class="displayCenter txtCenter formProfil">
+
+        {% trans_default_domain 'FOSUserBundle' %}
+
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+        {{ form_widget(form) }}
+
+
+        <div>
+            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+
+    {% include 'commons/_footer.html.twig' %}
+{% endblock %}

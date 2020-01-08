@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <main class="displayCenter imgGalerieShow">
+
+        <div class="txtCenter showGalerie PosRela">
+            <h4>{{ galerie.name }}</h4>
+
+            <div>Postée le {{ galerie.date|date("d/m/Y") }} par {{ galerie.author.username }}</div>
+
+            <img class="imgGalerieShowSize" alt=" {{ galerie.alt }}" src="{{ asset('asset/galerie/' ~ galerie.img) }}">
+
+            <p>{{ galerie.description }}</p>
+
+            <a class="loginLien PosAbso showLienBack" href="{{ path('galerie') }}">Retour</a>
+            <a class="loginLien PosAbso showLienDownload" href="">Télécharger</a>
+            <a class="loginLien PosAbso showLienAccueil" href="{{ path('accueil') }}">Accueil</a>
+            {% if is_granted("ROLE_ADMIN") %}
+                <a class="showLienSupp loginLien PosAbso " href="{{ path('galerie_delete_id', {'id' : galerie.id}) }}" type="submit" value="Supprimer">Supprimer </a>
+                <a class="showLienModif loginLien PosAbso " href="{{ path('galerie_update_id', {'id' : galerie.id}) }}" type="submit" value="Modifier">Modifier </a>
+            {% endif %}
+        </div>
+
+    </main>
+
+{% endblock %}

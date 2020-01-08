@@ -1,0 +1,40 @@
+<header class="PosRela headerImg">
+    <div class="headerRgba">
+        <div class="displayBetween">
+            <div class="displayStart">
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+                <a href="{{ path('fos_user_profile_show') }}" >Mon profil</a>
+            </div>
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="displayEnd">
+                    <a href="">Mes pages d'admin</a>
+                    <a href="">Mes pages d'admin</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="displayCenter headerPlacement">
+            <img class="headerLogo" src="{{ asset('asset/img/logoLJDP.png') }}" alt="logo le jardin de prune">
+            <img class="headerLogo" src="{{ asset('asset/img/logoCCie.png') }}" alt="logo cils and cie">
+        </div>
+
+        <div class="txtCenter headerLien displaySpace">
+            <a href="{{ path('accueil') }}">Accueil</a>
+            <a href="{{ path('galerie') }}">Galerie d'image</a>
+            <a href="">Event & Opé</a>
+            <a href="">Chiffre</a>
+            <a href="">Protocole</a>
+            <a href="">Produit</a>
+            <a href="">Commande</a>
+        </div>
+
+    </div>
+</header>

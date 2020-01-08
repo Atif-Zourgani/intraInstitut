@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'commons/_header.html.twig' %}
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="profilShow txtCenter">
+        <p>{{ 'profile.show.username'|trans }}: <br> {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: <br> {{ user.email }}</p>
+        <a href="{{ path('accueil') }}" class="profilLien">Accueil</a>
+        <a href="{{ path('fos_user_profile_edit') }}" class="profilLien">Modifier</a>
+    </div>
+
+    {% include 'commons/_footer.html.twig' %}
+{% endblock %}

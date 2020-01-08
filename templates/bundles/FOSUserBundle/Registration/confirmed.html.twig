@@ -1,0 +1,34 @@
+
+
+    {% extends "@FOSUser/layout.html.twig" %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {% block fos_user_content %}
+
+                <main class="PosRela">
+                    <div class="loginWallpaper PosRela">
+                        <div class="loginRgba">
+
+                            <p><h2 class="txtCenter loginTitle">Se connecter</h2></p>
+
+                            <div class="txtCenter loginForm">
+                                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }} <br> Vous aurez accès au site sous 24 heures.</p>
+                                {% if targetUrl %}
+                                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                                {% endif %}
+                            </div>
+                            <div class="txtCenter">
+                                <a class="loginLien" href="{{ path('loginAccueil') }}">Retour.</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </main>
+
+    {% endblock fos_user_content %}
+
+
+
+
+

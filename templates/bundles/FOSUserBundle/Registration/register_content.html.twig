@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <main class="PosRela">
+        <div class="loginWallpaper PosRela">
+            <div class="loginRgba txtCenter">
+
+                <p><h2 class="txtCenter loginTitle">S'enregistrer</h2></p>
+
+                <div class="displayCenter">
+                    <div class="loginForm txtCenter ">
+                        {% trans_default_domain 'FOSUserBundle' %}
+
+                        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                        {{ form_widget(form) }}
+                        <div>
+                            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <div>
+                    <a class="loginLien" href="{{ path('fos_user_security_login') }}">Retour</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

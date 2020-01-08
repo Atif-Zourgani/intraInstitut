@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'commons/_header.html.twig' %}
+
+        <main>
+            <div class="sticky displayBetween">
+                <form action="{{ path('get_galerie_by_description_or_by_name') }}" method="get" class="marginSticky">
+                    {#value ( elle concerve le champ deja inscrit grace au get )
+                     value = dans le site / dans la request/ dans le query / va chercher le get description#}
+                    <input type="text" name="description" placeholder="Par description"
+                           value="{{ app.request.query.get('description') }}">
+                    <input type="text" name="name" placeholder="Par titre"
+                           value="{{ app.request.query.get('name') }}">
+                    <input type="submit" value="rechercher">
+                </form>
+                <div class="marginSticky zIndex">
+                    <a href="{{ path('galerie_insert') }}" class="loginLien txtCenter" >Ajouter une image</a>
+                </div>
+            </div>
+
+            <div class="galerieDisposition">
+
+                    {% for photo in galerie %}
+                    <div class="PosRela">
+                       {# <h4>{{ photo.name }}</h4>#}
+                        <img class="photoSizeGalerie" alt="{{ photo.alt }}" src="{{ asset('asset/galerie/' ~ photo.img) }}">
+                        <a href="{{ path('show_id', {'id' : photo.id}) }}" class="PosAbso galerieLien aEffecaer">Voir</a>
+                    </div>
+                    {% endfor %}
+            </div>
+        </main>
+
+    {% include 'commons/_footer.html.twig' %}
+{% endblock %}

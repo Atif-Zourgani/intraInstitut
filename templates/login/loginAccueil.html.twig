@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <main class="PosRela">
+        <div class="loginWallpaper PosRela">
+            <div class="loginRgba txtCenter">
+                <h1 class="loginTitle">Bienvenue dans votre espace pro. </h1>
+                <h2> Cils & Cie | Le Jardin de Prune.</h2>
+                <div class="displayCenter">
+                    <div class="loginImgSize">
+                        <a href="http://cils-et-compagnie.fr/"><img class="loginImg" src="{{ asset('asset/img/logoCCieRose.png') }}"></a>
+                    </div>
+                    <div class="loginImgSize">
+                        <a href="https://lejardindeprune.fr/"><img class="loginImg" src="{{ asset('asset/img/logoLJDP.png') }}"></a>
+                    </div>
+                </div>
+                <div class="loginLien">
+                    <a href="{{ path('fos_user_registration_register') }}">Création compte.</a>
+                </div>
+                <div class="loginLien">
+                    <a href="{{ path('fos_user_security_login') }}">Se connecter.</a>
+                </div>
+                <div>
+                    <a href="{{ path('contact') }}">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}
