@@ -6,7 +6,7 @@
         <div class="txtCenter showGalerie PosRela">
             <h4>{{ galerie.name }}</h4>
 
-            <div>Postée le {{ galerie.date|date("d/m/Y") }} par {{ galerie.author.username }}</div>
+            <div>Postée le {{ galerie.date|date("d/m/Y") }} {#par {{ galerie.author.username }}#}</div>
 
             <img class="imgGalerieShowSize" alt=" {{ galerie.alt }}" src="{{ asset('asset/galerie/' ~ galerie.img) }}">
 

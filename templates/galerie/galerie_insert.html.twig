@@ -2,38 +2,7 @@
 {% block body %}
     {% include 'commons/_header.html.twig' %}
 
-    <main>
-
-        </div>
-        <div class="form">
-              {# Formulaire d'ajout d'une nouvelle photo
-              methode get= envoi de données avec url / action = ou l'envoyer#}
-            <form method="get" action="{{ path('galerie_insert_ok') }}" >
-                Photo<br>
-                <input type="file" name="img" value="Photo" required="required">
-                <br>
-                Titre<br>
-                {#//type = quel genre de champ ( date / text ?) /name = denomination de colonne SQL visé / Value= Quoi y indiquer/ required=obligation de remplir ce champ#}
-                <input type="text" name="name" value="Titre" required="required">
-                <br>
-                Description<br>
-                {#type = quel genre de champ ( date / text ?) /name = denomination de colonne SQL visé / Value= Quoi y indiquer/ required=obligation de remplir ce champ#}
-                <textarea type="text" name="description" value="Description" required="required"></textarea>
-                <br>
-                Légende<br>
-                {#type = quel genre de champ ( date / text ?) /name = denomination de colonne SQL visé / Value= Quoi y indiquer/ required=obligation de remplir ce champ#}
-                <input type="text" name="alt">
-                <br>
-                Date<br>
-                <input type="date" name="Date"><br>
-                Auteur de la photo<br>
-                <input type="text" name="author_id">
-                <br><br>
-                {#submit = bouton d'envoi#}
-                <input type="submit" value="Envoyez">
-            </form>
-        </div>
-    </main>
+{{ form(form) }}
 
     {% include 'commons/_footer.html.twig' %}
 {% endblock %}
