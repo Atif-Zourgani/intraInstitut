@@ -319,3 +319,7 @@ footer{
     right: -300px;
     background-color: rgba(181, 220, 225,.6);
 }
+.formGalerie{
+    font-size: 20px;
+    margin: 50px 0;
+}

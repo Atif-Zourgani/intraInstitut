@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
+{% block title %}IntraInstitut - Galerie d'image{% endblock %}
 {% block body %}
     {% include 'commons/_header.html.twig' %}
-
-{{ form(form) }}
-
+    <main>
+        <div class="txtCenter displayCenter formGalerie">
+            {{ form(form) }}
+        </div>
+    </main>
     {% include 'commons/_footer.html.twig' %}
 {% endblock %}
