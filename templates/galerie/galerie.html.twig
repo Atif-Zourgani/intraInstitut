@@ -23,7 +23,7 @@
 
                     {% for photo in galerie %}
                     <div class="PosRela">
-                       <h4>{{ photo.name }}</h4>
+                       <h6 class="txtCenter">{{ photo.name }}</h6>
                         <img class="photoSizeGalerie" alt="{{ photo.alt }}" src="{{ asset('asset/galerie/' ~ photo.img) }}">
                         <a href="{{ path('show_id', {'id' : photo.id}) }}" class="PosAbso galerieLien aEffecaer">Voir</a>
                     </div>

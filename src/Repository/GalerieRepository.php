@@ -19,18 +19,6 @@ class GalerieRepository extends ServiceEntityRepository
         parent::__construct($registry, Galerie::class);
     }
 
-    public function getGalerieOrderByDate()
-    {
-        $queryBuilder = $this->createQueryBuilder('galerie'); //
-
-        $query = $queryBuilder->select('galerie')
-            ->orderBy('galerie.date')
-            ->getQuery();
-
-        //Executer la requête en base de données pour recuperer les bons livres
-        return $query->getArrayResult();// demande de resultats en array mais d'autre possibilité son disponible
-    }
-
     public function getGalerieByDescriptionOrByName($name,$description)
     {
         // recuperer le query builder ( car c'est le query builder qui  permet de faire la requête SQL )
