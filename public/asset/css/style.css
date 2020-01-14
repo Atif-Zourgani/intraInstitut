@@ -248,7 +248,7 @@ footer{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    margin: 75px 190px;
+    margin: 75px 130px;
 }
 .photoSizeGalerie{
     width: 44vh;

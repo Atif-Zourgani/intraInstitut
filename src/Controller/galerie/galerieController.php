@@ -52,7 +52,7 @@ class galerieController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/galerie/delete/{id}", name="galerie_delete_id")
+     * @Route("/accueil/galerie/delete/{id}", name="admin_galerie_delete_id")
      */
     public function deleteGalerie(GalerieRepository $galerieRepository, EntityManagerInterface $entityManager, $id)
     {//but supprimer un livre dans SQL
@@ -110,7 +110,7 @@ class galerieController extends AbstractController
 
 
     /**
-     * @Route("/accueil/galerie/update/{id}", name="galerie_update_id")
+     * @Route("/accueil/galerie/update/{id}", name="admin_galerie_update_id")
      */
     public
     function updateGalerie(GalerieRepository $galerieRepository, Request $request, EntityManagerInterface $entityManager, $id)
@@ -139,36 +139,9 @@ class galerieController extends AbstractController
 
         // je retourne un fichier twig, et je lui envoie ma variable qui contient
         // mon formulaire
-        return $this->render('galerie/galerie_update_id.html.twig', [
+        return $this->render('galerie/admin_galerie_update_id.html.twig', [
             'formView' => $formView
         ]);
     }
 
-    /**
-     * @Route("/accueil/galerie/update", name="galerie_update_ok")
-     */
-    public
-    function updateGalerieOk(EntityManagerInterface $entityManager, Request $request, GalerieRepository $galerieRepository, $id)
-    {
-        $galerie = $galerieRepository->find($id);
-
-        $name = $request->query->get('name');
-        $description = $request->query->get('description');
-        $alt = $request->query->get('alt');
-        $date = $request->query->get('date');
-        $authors = $request->query->get('authors');
-
-        $galerie = new Galerie();
-
-        $galerie->setName($name);
-        $galerie->setDescription($description);
-        $galerie->setAlt($alt);
-        $galerie->setDate(new \DateTime($date));
-        $galerie->setAuthor($authors);
-
-        $entityManager->persist($galerie);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('galerie');
-    }
 }
