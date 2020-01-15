@@ -19,10 +19,8 @@ class galerieController extends AbstractController
     /**
      * @Route("/accueil/galerie", name="galerie")
      */
-    public function allGalerie(GalerieRepository $galerieRepository, Request $request)
+    public function allGalerie(GalerieRepository $galerieRepository)
     {
-        $date = $request->query->get('date');
-
         $galerie = $galerieRepository->findBy([],['date' => 'DESC']);
 
         return $this->render('galerie/galerie.html.twig', ['galerie' => $galerie]);
