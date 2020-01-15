@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}IntraInstitut - Produits{% endblock %}
+{% block body %}
+    {% include 'commons/_header.html.twig' %}
+
+    <main>
+        <div class="sticky displayBetween">
+            <form action="" method="get" class="marginSticky">
+                {#value ( elle concerve le champ deja inscrit grace au get )
+                 value = dans le site / dans la request/ dans le query / va chercher le get description#}
+                <input type="text" name="ref" placeholder="Par référence"
+                       value="">
+                <input type="text" name="name" placeholder="Par nom"
+                       value="">
+                <input type="submit" value="rechercher">
+            </form>
+            <div class="marginSticky zIndex">
+                <a href="{{ path('galerie_insert') }}" class="loginLien txtCenter" >Ajouter un produit</a>
+            </div>
+        </div>
+
+        <div class="productDisposition">
+
+            {% for photo in galerie %}
+                <div class="PosRela">
+                    <h6 class="txtCenter">{{ photo.name }}</h6>
+                    <img class="photoSizeGalerie" alt="{{ photo.alt }}" src="{{ asset('asset/galerie/' ~ photo.img) }}">
+                    <a href="{{ path('show_id', {'id' : photo.id}) }}" class="PosAbso galerieLien aEffecaer">Voir</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    {% include 'commons/_footer.html.twig' %}
+{% endblock %}
