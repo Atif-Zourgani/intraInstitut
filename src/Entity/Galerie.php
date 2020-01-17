@@ -34,6 +34,7 @@ class Galerie
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min=2, max=150, minMessage="Le titre doit au moins comporter 2 caractères", maxMessage="Le titre ne doit pas comporter plus de 150 caractères")
      */
     private $description;
 

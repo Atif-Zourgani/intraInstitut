@@ -44,16 +44,16 @@ class galerieController extends AbstractController
         $description = $request->query->get('description');
         $name = $request->query->get('name');
 
-        $galerie = $galerieRepository->getGalerieByDescriptionOrByName($description, $name);
+        $galerie = $galerieRepository->getGalerieByDescriptionOrByName($name, $description);
 
         return $this->render('galerie/galerie.html.twig', ['galerie' => $galerie]);
     }
 
     /**
-     * @Route("/accueil/galerie/delete/{id}", name="admin_galerie_delete_id")
+     * @Route("/admin/accueil/galerie/delete/{id}", name="admin_galerie_delete_id")
      */
     public function deleteGalerie(GalerieRepository $galerieRepository, EntityManagerInterface $entityManager, $id)
-    {//but supprimer un livre dans SQL
+    {//but supprimer un article dans SQL
 
         $galerie = $galerieRepository->find($id);
 
@@ -85,7 +85,7 @@ class galerieController extends AbstractController
             if ($image != null) {
                 // stock le dossier de destination défini dans config/services.yaml
                 $upload_directory = $this->getParameter('upload_directory');
-                $filename = $request->request->get('galerie')['img'] . '.' . $image->guessExtension();
+                $filename = $request->request->get('galerie')['img'] . '.' . $image->guessExtension(); //identifie la nature du fichier
 
                 // déplace le fichier dans le dossier désiré
                 $image->move(
@@ -108,7 +108,7 @@ class galerieController extends AbstractController
 
 
     /**
-     * @Route("/accueil/galerie/update/{id}", name="admin_galerie_update_id")
+     * @Route("/admin/accueil/galerie/update/{id}", name="admin_galerie_update_id")
      */
     public
     function updateGalerie(GalerieRepository $galerieRepository, Request $request, EntityManagerInterface $entityManager, $id)
