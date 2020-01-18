@@ -3,11 +3,13 @@
 
 namespace App\Controller\product;
 
+use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\EntityManagerInterface;
 
 class productController extends AbstractController
@@ -98,4 +100,41 @@ class productController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/accueil/product/product_insert", name="product_insert")
+     */
+     public function insertProduct(Request $request, EntityManagerInterface $entityManager)
+     {
+         //Je crée un nouvel article
+         //J'utilise la gabarit de formulaire pour créer mon formulaire
+         //J'envoie mon formulaire a un fichier twig
+         //et je l'affiche
+
+         //je crée un nouvel article/ en créant une nouvelle instance de l'entité product
+         $product = new product();
+
+         //J'utilise la methode createform pour créer le gabarit de formulaire pour le product: Producttype ( que j'ai generer ne ligne de commande
+         //) et je lui associe mon entité product vide.
+         $form = $this->createForm(ProductType::class, $product);
+
+         //si je suis sur une methode post donc qu'un formulaire a été envoyé
+         if ($request->isMethod('post')) {
+
+             //je récupere les données de la method (post) et je les associes a mon formulaire
+             $form->handleRequest($request);
+
+             //Si les données de mon formulaires sont valide ( que les types dans les input sont bon, que tout les champs obligatoire sont remplis etc)
+             if ($form->isValid()) {
+
+                 //j'enregistre en BDD ma variable $product qui n'est plus vide car elle as été remplie avec les données du formulaire
+                 $entityManager->persist($product);
+                 $entityManager->flush();
+                 return $this->redirectToRoute('product');
+             }
+         }
+
+         $formView = $form->createView();
+
+         return $this->render('product/product_insert.html.twig', ['formView' => $formView]);
+     }
 }

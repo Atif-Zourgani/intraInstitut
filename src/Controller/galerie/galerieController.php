@@ -82,10 +82,10 @@ class galerieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // stock toutes les images envoyées par le formulaire dans $images
             $image = $request->files->get('galerie')['image'];
-            if ($image != null) {
+            if ($image != null) { //!=différent
                 // stock le dossier de destination défini dans config/services.yaml
                 $upload_directory = $this->getParameter('upload_directory');
-                $filename = $request->request->get('galerie')['img'] . '.' . $image->guessExtension(); //identifie la nature du fichier
+                $filename = $request->request->get('galerie')['img'] . '.' . $image->guessExtension();
 
                 // déplace le fichier dans le dossier désiré
                 $image->move(

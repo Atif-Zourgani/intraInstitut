@@ -4,6 +4,7 @@
 namespace App\Controller\accueil;
 
 
+use App\Repository\GalerieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,8 +15,10 @@ class accueilController extends AbstractController
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function accueil()
+    public function accueil(GalerieRepository $galerieRepository)
     {
-     return $this->render('accueil/accueil.html.twig');
+        $galerie = $galerieRepository->findBy([],['date' => 'DESC']);
+
+        return $this->render('accueil/accueil.html.twig', ['galerie' => $galerie]);
     }
 }

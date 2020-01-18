@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}IntraInstitut - Produit{% endblock %}
+{% block body %}
+    {% include 'commons/_header.html.twig' %}
+    <main>
+        <div class="txtCenter displayCenter formGalerie">
+            {{ form(formView) }}
+        </div>
+    </main>
+    {% include 'commons/_footer.html.twig' %}
+{% endblock %}

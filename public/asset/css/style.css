@@ -17,7 +17,7 @@
     src: url("../font/mapolice.ttf");
 }
 body{
-    font-family: "mapolice";
+    font-family: "mapolice", serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -122,7 +122,7 @@ header{
 }
 .aheader{
     color: rgb(42, 105, 100);
-    font-family: "mapoliceTitle";
+    font-family: "mapoliceTitle", serif;
     font-size: 25px;
 }
 .bandeRose{
@@ -177,6 +177,14 @@ footer{
     font-size: 20px;
     background-color: rgba(255,255,255,0.1);
     width: 30vh;
+    border-radius: 10px 100px / 120px;
+}
+.loginLienSticky{
+    margin: 2vh auto;
+    font-size: 20px;
+    background-color: rgba(238, 203, 200, 0.9);
+    width: 30vh;
+    color: rgb(42, 105, 100);
     border-radius: 10px 100px / 120px;
 }
 .loginImgContact{
@@ -238,10 +246,30 @@ footer{
 .accueilGalerie{
 
 }
+.photoSizeAccueil{
+    width: 250px;
+    height: 200px;
+    filter: grayscale(0.6);
+    z-index: 1;
+    transition: transform .2s;
+    margin: 5px 0;
+}
+.photoSizeAccueil:hover{
+    filter: none;
+    transform: scale(1.04);
+    z-index: 500;
+}
+.accueilShowMore{
+  width: 400px;
+    font-size: 40px;
+    bottom: -80px;
+    left: 50%;
+
+}
 
 /*
 ----------------------------------------------------------------------------------------------------------------------
---------------------------------------------Debut CSS galerie --------------------------------------------------------
+--------------------------------------------Debut CSS Article --------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------
  */
 .galerieDisposition{
@@ -291,7 +319,7 @@ footer{
     background-color: rgba(200,200,200,0.8);
 }
 .imgGalerieShowSize{
-    width: 80%;
+    height: 300px;
     padding: 10px 0;
 }
 .showLienBack{
@@ -324,12 +352,3 @@ footer{
     margin: 50px 0;
 }
 
-/*
-----------------------------------------------------------------------------------------------------------------------
---------------------------------------------Debut CSS product --------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------
- */
-
-.productDisposition{
-
-}

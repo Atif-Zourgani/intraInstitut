@@ -18,7 +18,7 @@
             <a class="loginLien PosAbso showLienAccueil" href="{{ path('accueil') }}">Accueil</a>
             {% if is_granted("ROLE_ADMIN") %}
                 <a class="showLienSupp loginLien PosAbso" href="{{ path('admin_product_delete_id', {'id' : product.id}) }}" type="submit" value="Supprimer">Supprimer </a>
-                <a class="showLienModif loginLien PosAbso" href="" type="submit" value="Modifier">Modifier </a>
+                <a class="showLienModif loginLien PosAbso" href="{{ path('admin_product_update_id', {'id' : product.id}) }}" type="submit" value="Modifier">Modifier </a>
             {% endif %}
         </div>
 
