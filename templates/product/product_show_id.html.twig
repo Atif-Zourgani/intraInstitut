@@ -9,6 +9,10 @@
 
             <div>ref:{{ product.ref }}. {{ product.quantity }} produit disponible</div>
 
+            {% if product.quantity == 0 %}
+                <p class="errorMessage">Rupture de stock.</p>
+            {% endif %}
+
             <img class="imgGalerieShowSize" alt=" {{ product.galerie.alt }}" src="{{ asset('asset/galerie/' ~ product.galerie.img) }}">
 
             <p>{{ product.description }}</p>

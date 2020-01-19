@@ -29,6 +29,7 @@ class Galerie
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\File(maxSize = "1024k", maxSizeMessage="Votre fichier est trop volumineux", mimeTypes = {"pdf", "jpeg", "jpg"}, mimeTypesMessage = "Seul les fichier de type pdf, jpeg, jpg son accepté")
      */
     private $img;
 

@@ -24,7 +24,10 @@
             {% for article in product %}
                 <div class="PosRela">
                     <h6 class="txtCenter">{{ article.name }}</h6>
-                    <p class="txtCenter"> ref:{{ article.ref }}</p>
+                    <p class="txtCenter"> ref:{{ article.ref }} </p>
+                        {% if article.quantity == 0 %}
+                            <p class="txtCenter PosAbso errorProduct">Rupture de stock.</p>
+                        {% endif %}
                     <img class="photoSizeGalerie" alt="{{ article.galerie.alt }}" src="{{ asset('asset/galerie/' ~ article.galerie.img) }}">
                     <a href="{{ path('product_show_id', {'id' : article.id}) }}" class="PosAbso galerieLien aEffecaer">Voir</a>
                 </div>

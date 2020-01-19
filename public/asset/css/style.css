@@ -260,11 +260,13 @@ footer{
     z-index: 500;
 }
 .accueilShowMore{
-  width: 400px;
+    width: 400px;
     font-size: 40px;
     bottom: -80px;
     left: 50%;
-
+}
+.accueilLien{
+    color: rgb(42, 105, 100);
 }
 
 /*
@@ -350,5 +352,11 @@ footer{
 .formGalerie{
     font-size: 20px;
     margin: 50px 0;
+}
+.errorProduct{
+    color: red;
+    z-index: 9999;
+    left: 34%;
+    top: 50%;
 }
 

@@ -10,8 +10,18 @@
                             <img class="photoSizeAccueil" alt="{{ photo.alt }}" src="{{ asset('asset/galerie/' ~ photo.img) }}">
                     {% endfor %}
                 </div>
-                <div class="accueilShowMore PosAbso"> <a>Voir toute la Galerie...</a></div>
+                <div class="accueilShowMore PosAbso"> <a class="accueilLien" href="{{ path('galerie') }}">Voir toute la Galerie...</a></div>
             </div>
+            <div class="zoneBlanche"></div>
+            <div class="PosRela">
+                <div class="displayCenter">
+                    {% for article in product | slice(0,3)%}
+                        <img class="photoSizeAccueil" alt="{{ article.galerie.alt }}" src="{{ asset('asset/galerie/' ~ article.galerie.img) }}">
+                    {% endfor %}
+                </div>
+                <div class="accueilShowMore PosAbso"> <a class="accueilLien" href="{{ path('product') }}">Voir tous les produits...</a></div>
+            </div>
+            <div class="zoneBlanche"></div>
             <div class="zoneBlanche"></div>
         </main>
 
