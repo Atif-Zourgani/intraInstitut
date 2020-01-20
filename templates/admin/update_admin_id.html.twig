@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}IntraInstitut - Administration{% endblock %}
+{% block body %}
+
+    <main>
+        <div class="zoneBlanche"></div>
+        <div class="displayCenter">
+            <a class="loginLien showLienAccueil txtCenter" href="{{ path('accueil') }}">Accueil</a>
+            <a class="loginLien showLienAccueil txtCenter" href="{{ path('accueil') }}">Retour</a>
+        </div>
+        <div class="txtCenter">
+            <div class="txtCenter displayCenter formGalerie">
+                {{ form(formView) }}
+            </div>
+        </div>
+    </main>
+
+
+
+{% endblock %}

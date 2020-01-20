@@ -15,7 +15,7 @@
             </div>
             {% if is_granted("ROLE_ADMIN") %}
                 <div class="displayEnd">
-                    <a class="aheader" href="">Ma page admin</a>
+                    <a class="aheader" href="{{ path('page_admin') }}">Ma page admin</a>
                 </div>
             {% endif %}
         </div>

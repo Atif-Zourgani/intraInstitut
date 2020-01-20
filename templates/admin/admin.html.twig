@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}IntraInstitut - Administration{% endblock %}
+{% block body %}
+
+    <main>
+        <div class="displayCenter">
+            <a class="loginLien showLienAccueil txtCenter" href="{{ path('accueil') }}">Accueil</a>
+        </div>
+        {% for u in user %}
+            <div class="txtCenter">
+                <div>
+                    <h5>{{ u.username }}</h5>
+                </div>
+                <div>
+                    email: {{ u.email }} | Dernier login: {{ u.lastlogin|date('Y-m-d H:i:s') }} | Rôle:
+                    {% for role in u.roles %}
+                        {{ role }}
+                    {% endfor %}
+                    <a class="errorMessage" href="{{ path('update_admin_id', {'id' : u.id}) }}"> Modifier </a>
+                    <br><br><br>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </main>
+
+{% endblock %}

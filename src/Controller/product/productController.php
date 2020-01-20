@@ -3,7 +3,9 @@
 
 namespace App\Controller\product;
 
+use App\Entity\Commande;
 use App\Entity\Product;
+use App\Form\CommandeType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -137,4 +139,30 @@ class productController extends AbstractController
 
          return $this->render('product/product_insert.html.twig', ['formView' => $formView]);
      }
+
+     ///**
+    // * @Route("/accueil/product/commande/{id}", name="commande_id"
+    //*/
+    //public function commande(Request $request)
+    //{
+    //   $commande = new Commande();
+
+    //   $form = $this ->createForm(CommandeType::class, $commande);
+
+    //   if ($request->isMethod('Post')) {
+    //       $form->handleRequest($request);
+    //       if ($form->isSubmitted() && $form->isValid()) {
+    //           $entityManager = $this->getDoctrine()->getManager();
+    //           $entityManager->persist($commande);
+    //           $entityManager->flush();
+
+    //           $message = (new \Swift_Message(''))
+    //               ->setSubject('Demande de commande')
+    //               ->setFrom('atif.zourgani@lapiscine.pro')
+    //               ->setTo('atif.zourganit@gmail.com')
+    //               ->setBody('Demande de commande.
+    //       }
+    //   }
+    //}
+
 }
