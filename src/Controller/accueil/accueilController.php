@@ -14,7 +14,7 @@ class accueilController extends AbstractController
 
 {
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/login/accueil", name="accueil")
      */
     public function accueil(GalerieRepository $galerieRepository, ProductRepository $productRepository)
     {

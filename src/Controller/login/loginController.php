@@ -17,9 +17,8 @@ class loginController extends AbstractController
     public function loginAccueil()
     {
         //Renvois a la page d'accueil une fois que l'on est connecté
-        //if ( 'role_user' == true){
-
-            //return $this->redirectToRoute('accueil');}=
+        if ('role_user' == true)
+            return $this->redirectToRoute('accueil');
 
         return $this->render('login/loginAccueil.html.twig');
     }

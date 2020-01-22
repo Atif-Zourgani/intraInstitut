@@ -17,7 +17,7 @@ class galerieController extends AbstractController
 
 {
     /**
-     * @Route("/accueil/galerie", name="galerie")
+     * @Route("/login/accueil/galerie", name="galerie")
      */
     public function allGalerie(GalerieRepository $galerieRepository)
     {
@@ -27,7 +27,7 @@ class galerieController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/galerie/show{id}", name="show_id")
+     * @Route("/login/accueil/galerie/show{id}", name="show_id")
      */
     public function getShowGalerie(GalerieRepository $galerieRepository, $id)
     {
@@ -37,7 +37,7 @@ class galerieController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/galerie_get_by", name="get_galerie_by_description_or_by_name")
+     * @Route("/login/accueil/galerie_get_by", name="get_galerie_by_description_or_by_name")
      */
     public function getGalerieByDescriptionOrByName(GalerieRepository $galerieRepository, Request $request)
     {
@@ -67,7 +67,7 @@ class galerieController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/galerie/galerie_insert", name="galerie_insert")
+     * @Route("/login/accueil/galerie/galerie_insert", name="galerie_insert")
      * @param Request $request
      * @return Response
      */

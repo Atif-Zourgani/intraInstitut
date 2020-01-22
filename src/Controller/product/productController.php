@@ -18,7 +18,7 @@ class productController extends AbstractController
 
 {
     /**
-     * @Route("accueil/product", name="product")
+     * @Route("/user/accueil/product", name="product")
      */
     public function allProduct(ProductRepository $productRepository)
     {
@@ -28,7 +28,7 @@ class productController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/product/show{id}", name="product_show_id")
+     * @Route("/user/accueil/product/show{id}", name="product_show_id")
      */
     public function getShowProduct(ProductRepository $productRepository, $id)
     {
@@ -38,7 +38,7 @@ class productController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/product/search", name="get_product_by_ref_or_by_name")
+     * @Route("/user/accueil/product/search", name="get_product_by_ref_or_by_name")
      */
     public function getProductByRefOrByName(ProductRepository $productRepository, Request $request)
     {
@@ -54,16 +54,12 @@ class productController extends AbstractController
      * @Route("/admin/accueil/product/delete/{id}", name="admin_product_delete_id")
      */
     public function deleteProduct(ProductRepository $productRepository, EntityManagerInterface $entityManager, $id)
-    {//but supprimer un article dans SQL
-
+    {
         $product = $productRepository->find($id);
 
-        // remove = efface
         $entityManager->remove($product);
-
         $entityManager->flush();
 
-        //redirectToRoute= redirige vers la page de pages pour que l'on vois directemeent la suppression et qu'on puissent continuer a bosser
         return $this->redirectToRoute('product');
     }
 
@@ -103,40 +99,28 @@ class productController extends AbstractController
     }
 
     /**
-     * @Route("/accueil/product/product_insert", name="product_insert")
+     * @Route("/user/accueil/product/product_insert", name="product_insert")
      */
      public function insertProduct(Request $request, EntityManagerInterface $entityManager)
      {
-         //Je crée un nouvel article
-         //J'utilise la gabarit de formulaire pour créer mon formulaire
-         //J'envoie mon formulaire a un fichier twig
-         //et je l'affiche
-
-         //je crée un nouvel article/ en créant une nouvelle instance de l'entité product
+         //nouvelle instance de l'entité product
          $product = new product();
 
-         //J'utilise la methode createform pour créer le gabarit de formulaire pour le product: Producttype ( que j'ai generer ne ligne de commande
-         //) et je lui associe mon entité product vide.
+         //J'utilise la methode createform pour créer le gabarit de formulaire pour le product: Producttype
          $form = $this->createForm(ProductType::class, $product);
 
-         //si je suis sur une methode post donc qu'un formulaire a été envoyé
          if ($request->isMethod('post')) {
 
              //je récupere les données de la method (post) et je les associes a mon formulaire
              $form->handleRequest($request);
 
-             //Si les données de mon formulaires sont valide ( que les types dans les input sont bon, que tout les champs obligatoire sont remplis etc)
              if ($form->isValid()) {
-
-                 //j'enregistre en BDD ma variable $product qui n'est plus vide car elle as été remplie avec les données du formulaire
                  $entityManager->persist($product);
                  $entityManager->flush();
                  return $this->redirectToRoute('product');
              }
          }
-
          $formView = $form->createView();
-
          return $this->render('product/product_insert.html.twig', ['formView' => $formView]);
      }
 
